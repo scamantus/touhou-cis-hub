@@ -1,0 +1,19 @@
+{
+  "name": "touhou-cis-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VINT64/touhou-cis-hub.git"
+  },
+  "author": "VINT64",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VINT64/touhou-cis-hub/issues"
+  },
+  "homepage": "https://github.com/VINT64/touhou-cis-hub#index.html"
+}
