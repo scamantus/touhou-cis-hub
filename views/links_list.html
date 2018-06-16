@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="Author" content="VINT64">
-<title>Тесты js</title>
+<title>Touhou CIS hub</title>
 </head>
 
 
@@ -89,7 +89,7 @@ function parse_list(list){
 function loadJSON() {   
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', '//ll_latest.json', true);
+    xobj.open('GET', '/links_lists/ll_latest.json', true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200")
             parse_list(JSON.parse(xobj.responseText));

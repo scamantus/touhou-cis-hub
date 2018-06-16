@@ -1,15 +1,32 @@
-var http = require("http");
+const express = require('express')
+const app = express()
 
-http.createServer(function (request, response) {
+var port = process.env.PORT || 8080;
 
-   // Send the HTTP header 
-   // HTTP Status: 200 : OK
-   // Content Type: text/plain
-   response.writeHead(200, {'Content-Type': 'text/plain'});
-   
-   // Send the response body as "Hello World"
-   response.end('Hello World\n');
-}).listen(80);
+app.set('view engine', 'ejs');
+//app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 
-// Console will print the message
-console.log('Server running at http://127.0.0.1:80/');
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/../public'));
+app.use('/links_lists', express.static(__dirname + '/links_lists'));
+
+// set the home page route
+app.get('/', function(req, res) {
+
+    // ejs render automatically looks in the views folder
+    res.render('index.html');
+});
+app.get('/links_list', function(req, res) {
+
+    // ejs render automatically looks in the views folder
+    res.render('links_list.html');
+});
+
+app.get('*', function(req, res) {
+	res.render('404.html');
+});
+
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
