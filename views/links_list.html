@@ -12,7 +12,11 @@
 
  <script>
 
- 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function addText(block, text){
 	block.appendChild(document.createTextNode(text));
 }
@@ -30,7 +34,28 @@ function myNewText(type, text){
 }
 
 function parse_link(link){
-	var ret = myNewText('p', link.description + ': ');
+	var left_part;
+	if (link.description == '' ) 
+	switch(link.source){
+		case 'vk':
+			left_part = 'ВК';
+			break;
+		case 'deviantart':
+			left_part = 'DeviantArt';
+			break;
+		case 'discord':
+		case 'youtube':
+		case 'telegram':
+		case 'tumblr':
+			left_part = capitalizeFirstLetter(link.source);
+			break;
+		default:
+			left_part = 'Ссылка';
+			break;
+	}
+	else
+		left_part = link.description;
+	var ret = myNewText('p', left_part + ': ');
 	var l = myNewText('a', link.url);
 	l.setAttribute('href', link.url);
 	ret.appendChild(l);
