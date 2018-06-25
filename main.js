@@ -1,11 +1,11 @@
-const express = require('express')
-const app = express()
-
+const express = require('express');
+const app = express();
+const ejs = require('ejs');
 var port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
 //app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+app.engine('html', ejs.renderFile);
 
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/../public'));

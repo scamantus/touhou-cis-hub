@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="Author" content="VINT64">
+<title>Touhou CIS hub</title>
+</head>
+
+
+<body>
+
+
+ <script>
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function addText(block, text){
+	block.appendChild(document.createTextNode(text));
+}
+function myNewBlock(type, cl){
+	var ret = document.createElement(type);
+	if (cl !== undefined)
+		ret.className = cl;
+	return ret;
+}
+function myNewText(type, text){
+	var ret = document.createElement(type);
+	if (text !== undefined)
+		addText(ret, text);
+	return ret;
+}
+
+function parse_link(link){
+	var left_part;
+	if (link.description == '' ) 
+	switch(link.source){
+		case 'vk':
+			left_part = 'ВК';
+			break;
+		case 'deviantart':
+			left_part = 'DeviantArt';
+			break;
+		case 'discord':
+		case 'youtube':
+		case 'telegram':
+		case 'tumblr':
+			left_part = capitalizeFirstLetter(link.source);
+			break;
+		default:
+			left_part = 'Ссылка';
+			break;
+	}
+	else
+		left_part = link.description;
+	var ret = myNewText('p', left_part + ': ');
+	var l = myNewText('a', link.url);
+	l.setAttribute('href', link.url);
+	ret.appendChild(l);
+	return ret;
+}
+function parse_entry(entry){
+	var ret = myNewBlock('div', 'entry');
+	var title = myNewText('h4', entry.title);
+	ret.appendChild(title);
+	var desc = myNewText('p', entry.description);
+	ret.appendChild(desc);
+	entry.links_list.forEach(function(item, i, arr){
+		var l = parse_link(item);
+		ret.appendChild(l);
+	});
+	return ret;
+}
+function parse_section(section){
+	var ret = myNewBlock('div', 'section');
+	ret.id = 'section';
+	var h = myNewText('h2', section.name);
+	ret.appendChild(h);
+	section.entries_list.forEach(function(item, i, arr) {
+		ret.appendChild(parse_entry(item));
+	});
+	return ret;
+}
+function parse_list(list){
+	var h = myNewBlock('div', 'header');
+	h.appendChild(myNewText('p', 'Ссылки на сообщества по Touhou Project в СНГ сегменте. Touhou СНГ Хаб©'));
+	document.body.appendChild(h);
+	var d = myNewBlock('div', 'date');
+	addText(d, 'Список на ' + list.date);
+	document.body.appendChild(d);
+	var menu = myNewBlock('div', 'menu');
+	var contents = myNewBlock('ol');
+	var section;
+	list.sections_list.forEach(function(item, i, arr) {
+		var li = myNewBlock('li');
+		var a = myNewText('a', item.name);
+		a.setAttribute('href', '#');
+		var l = parse_section(item);
+		if (section === undefined)
+			section = l;
+		a.addEventListener('click', function() {
+			document.body.replaceChild(l, document.getElementById('section'));
+		});
+		li.appendChild(a);
+		contents.appendChild(li);
+	});
+	menu.appendChild(contents);
+	document.body.appendChild(menu);
+	document.body.appendChild(section);
+}
+
+function loadJSON() {   
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', '/links_lists/ll_latest.json', true);
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200")
+            parse_list(JSON.parse(xobj.responseText));
+		else{
+		}
+    };
+    xobj.send(null);  
+}
+window.addEventListener('DOMContentLoaded', function() {
+	loadJSON();
+});
+  </script>
+
+</body>
+</html>
