@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "nanogen",
     "debug": "nanogen -w",
-    "postinstall": "node ./public/main.js"
+    "start": "node ./public/main.js"
   },
   "repository": {
     "type": "git",
