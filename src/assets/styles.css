@@ -1,0 +1,12 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css");
+
+header {
+	background-color: #eeeeee;
+}
+
+.navbar-nav>li {
+    display:inline-block;
+}
+.navbar-nav>li>a {
+    padding: 15px;
+}

@@ -1,20 +1,12 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="Author" content="VINT64">
-<title>Touhou CIS hub</title>
-</head>
 
-
-<body>
+<div id="list-container">
 
 
  <script>
 
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+function Normalise(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 function addText(block, text){
@@ -47,7 +39,7 @@ function parse_link(link){
 		case 'youtube':
 		case 'telegram':
 		case 'tumblr':
-			left_part = capitalizeFirstLetter(link.source);
+			left_part = Normalise(link.source);
 			break;
 		default:
 			left_part = 'Ссылка';
@@ -76,7 +68,7 @@ function parse_entry(entry){
 function parse_section(section){
 	var ret = myNewBlock('div', 'section');
 	ret.id = 'section';
-	var h = myNewText('h2', section.name);
+	var h = myNewText('h2', Normalise(section.name));
 	ret.appendChild(h);
 	section.entries_list.forEach(function(item, i, arr) {
 		ret.appendChild(parse_entry(item));
@@ -84,31 +76,33 @@ function parse_section(section){
 	return ret;
 }
 function parse_list(list){
+	var body = document.getElementById('list-container');
 	var h = myNewBlock('div', 'header');
 	h.appendChild(myNewText('p', 'Ссылки на сообщества по Touhou Project в СНГ сегменте. Touhou СНГ Хаб©'));
-	document.body.appendChild(h);
+	body.appendChild(h);
 	var d = myNewBlock('div', 'date');
-	addText(d, 'Список на ' + list.date);
-	document.body.appendChild(d);
+	var dd = myNewText('p', 'Список на ' + list.date);
+	d.appendChild(dd);
+	body.appendChild(d);
 	var menu = myNewBlock('div', 'menu');
 	var contents = myNewBlock('ol');
 	var section;
 	list.sections_list.forEach(function(item, i, arr) {
 		var li = myNewBlock('li');
-		var a = myNewText('a', item.name);
+		var a = myNewText('a', Normalise(item.name));
 		a.setAttribute('href', '#');
 		var l = parse_section(item);
 		if (section === undefined)
 			section = l;
 		a.addEventListener('click', function() {
-			document.body.replaceChild(l, document.getElementById('section'));
+			body.replaceChild(l, document.getElementById('section'));
 		});
 		li.appendChild(a);
 		contents.appendChild(li);
 	});
 	menu.appendChild(contents);
-	document.body.appendChild(menu);
-	document.body.appendChild(section);
+	body.appendChild(menu);
+	body.appendChild(section);
 }
 
 function loadJSON() {   
@@ -128,5 +122,4 @@ window.addEventListener('DOMContentLoaded', function() {
 });
   </script>
 
-</body>
-</html>
+</div>
