@@ -37,3 +37,27 @@ header a {
 header a:hover {
 	background: rgba(0, 0, 0, 0.1);
 }
+
+/* list part */
+
+.list-menu {
+	text-align: center;
+}
+
+.list-menu li {
+	display: inline-block;
+}
+
+.list-menu a {
+	margin: 7px;
+	padding: 7px;
+	display: block;
+	text-decoration: none;
+	border: 1px solid black;
+	border-radius: 16px/8px;
+	color: teal;
+}
+
+.list-menu a:hover {
+	background: rgba(0, 0, 0, 0.1);
+}

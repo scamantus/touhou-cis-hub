@@ -68,7 +68,7 @@ function parse_entry(entry){
 function parse_section(section){
 	var ret = myNewBlock('div', 'list-section');
 	ret.id = 'section';
-	var h = myNewText('h2', Normalise(section.name));
+	var h = myNewText('h2', section.name);
 	ret.appendChild(h);
 	section.entries_list.forEach(function(item, i, arr) {
 		ret.appendChild(parse_entry(item));
@@ -84,12 +84,11 @@ function parse_list(list){
 	var dd = myNewText('p', 'Список на ' + list.date);
 	d.appendChild(dd);
 	body.appendChild(d);
-	var menu = myNewBlock('div', 'list-menu');
-	var contents = myNewBlock('ol');
+	var menu = myNewBlock('ol', 'list-menu');
 	var section;
 	list.sections_list.forEach(function(item, i, arr) {
 		var li = myNewBlock('li');
-		var a = myNewText('a', Normalise(item.name));
+		var a = myNewText('a', item.name);
 		a.setAttribute('href', '#');
 		var l = parse_section(item);
 		if (section === undefined)
@@ -98,9 +97,9 @@ function parse_list(list){
 			body.replaceChild(l, document.getElementById('section'));
 		});
 		li.appendChild(a);
-		contents.appendChild(li);
+		menu.appendChild(li);
 	});
-	menu.appendChild(contents);
+	
 	body.appendChild(menu);
 	body.appendChild(section);
 }
