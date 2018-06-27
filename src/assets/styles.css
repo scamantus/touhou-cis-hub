@@ -54,10 +54,24 @@ header a:hover {
 	display: block;
 	text-decoration: none;
 	border: 1px solid black;
-	border-radius: 16px/8px;
+	border-radius: 15px;
 	color: teal;
 }
 
 .list-menu a:hover {
 	background: rgba(0, 0, 0, 0.1);
+}
+
+.list-entry {
+	border: 2px dashed black;
+	border-radius: 20px;
+	margin: 8px;
+	padding: 10px 20px;
+	display: inline-block;
+	background-color: silver;
+	vertical-align:top; 
+}
+
+.list-entry * {
+	margin: .5em 0;
 }

@@ -55,10 +55,20 @@ function parse_link(link){
 }
 function parse_entry(entry){
 	var ret = myNewBlock('div', 'list-entry');
-	var title = myNewText('h4', entry.title);
+	var title = myNewText('h2', entry.title);
 	ret.appendChild(title);
 	var desc = myNewText('p', entry.description);
 	ret.appendChild(desc);
+	if (entry.tags.length > 0){
+		var tags = 'Теги: ';
+		//TODO: interactive
+		entry.tags.forEach(function(item, i, arr){
+			if (i != 0)
+				tags+= ', ';
+			tags += item;
+		});
+		ret.appendChild(myNewText('p', tags));
+	}
 	entry.links_list.forEach(function(item, i, arr){
 		var l = parse_link(item);
 		ret.appendChild(l);
@@ -68,7 +78,7 @@ function parse_entry(entry){
 function parse_section(section){
 	var ret = myNewBlock('div', 'list-section');
 	ret.id = 'section';
-	var h = myNewText('h2', section.name);
+	var h = myNewText('h1', section.name);
 	ret.appendChild(h);
 	section.entries_list.forEach(function(item, i, arr) {
 		ret.appendChild(parse_entry(item));
