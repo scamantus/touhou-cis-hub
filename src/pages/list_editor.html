@@ -1,0 +1,15 @@
+
+<button onclick="save()">get cute json</button>
+<script type="text/javascript" src="/FileSaver.js"></script>
+<script type="text/javascript" src="/util.js"></script>
+<script type="text/javascript">
+	var cute_json;
+	loadJSON('/links_lists/ll_latest.json', function (s){
+	cute_json = JSON.parse(s);}, function (){});
+function save(){
+	if(cute_json !== undefined){
+	var blob = new Blob([JSON.stringify(cute_json)], {type: "text/plain;charset=utf-8"});
+	saveAs(blob, "ll_latest.json");
+	}
+}
+</script>

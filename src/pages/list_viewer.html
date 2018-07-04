@@ -1,7 +1,9 @@
-
+---
+title: Список ссылок
+---
 <div id="list-container">
 
-
+<script type="text/javascript" src="/util.js"></script>
  <script>
 
 
@@ -114,20 +116,9 @@ function parse_list(list){
 	body.appendChild(section);
 }
 
-function loadJSON() {   
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', '/links_lists/ll_latest.json', true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200")
-            parse_list(JSON.parse(xobj.responseText));
-		else{
-		}
-    };
-    xobj.send(null);  
-}
 window.addEventListener('DOMContentLoaded', function() {
-	loadJSON();
+	loadJSON('/links_lists/ll_latest.json', function (s){
+	parse_list(JSON.parse(s));}, function (){});
 });
   </script>
 
