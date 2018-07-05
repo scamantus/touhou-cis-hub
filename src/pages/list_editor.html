@@ -8,7 +8,7 @@
 	cute_json = JSON.parse(s);}, function (){});
 function save(){
 	if(cute_json !== undefined){
-	var blob = new Blob([JSON.stringify(cute_json)], {type: "text/plain;charset=utf-8"});
+	var blob = new Blob([JSON.stringify(cute_json)], {type: "application/json"});
 	saveAs(blob, "ll_latest.json");
 	}
 }
