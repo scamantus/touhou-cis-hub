@@ -7,8 +7,8 @@ title: Список ссылок
 	<div class="list-date"></div>
 	<ol class="list-menu"></ol>
 	<li class="list-menu-item"><a href="#"></a></li>
-	<div class="list-section" id="section"><h1 class="list-section-header"></h1></div>
-	<div class="list-entry"><h2 class="list-entry-header"></h2></div>
+	<div class="list-section" id="section"><h1 class="list-section-title"></h1></div>
+	<div class="list-entry"><h2 class="list-entry-title"></h2></div>
 	<p class="list-link"></p>
 </template>
 
@@ -74,7 +74,7 @@ function parse_link(link, temp){
 }
 function parse_entry(entry, temp){
 	var ret = getFromTemp(temp, '.list-entry');
-	var title = ret.querySelector('h2');
+	var title = ret.querySelector('list-entry-title');
 	addText(title, entry.title);
 	var desc = myNewText('p', entry.description);
 	ret.appendChild(desc);
@@ -96,7 +96,7 @@ function parse_entry(entry, temp){
 }
 function parse_section(section, temp){
 	var ret = getFromTemp(temp, '.list-section');
-	var h = ret.querySelector('h1');
+	var h = ret.querySelector('list-section-title');
 	addText(h, section.name);
 	section.entries_list.forEach(function(item, i, arr) {
 		ret.appendChild(parse_entry(item, temp));
