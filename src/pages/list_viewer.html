@@ -17,32 +17,6 @@ title: Список ссылок
 <script type="text/javascript" src="/util.js"></script>
  <script>
 
-
-function Normalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
-function addText(block, text){
-	block.appendChild(document.createTextNode(text));
-}
-function myNewBlock(type, cl){
-	var ret = document.createElement(type);
-	if (cl !== undefined)
-		ret.className = cl;
-	return ret;
-}
-function myNewText(type, text){
-	var ret = document.createElement(type);
-	if (text !== undefined)
-		addText(ret, text);
-	return ret;
-}
-
-
-function getFromTemp(temp, sel){
-	return temp.content.querySelector(sel).cloneNode(true);
-}
-
 function parse_link(link, temp){
 	var ret = getFromTemp(temp, '.list-link');
 	var left_part;
@@ -74,7 +48,7 @@ function parse_link(link, temp){
 }
 function parse_entry(entry, temp){
 	var ret = getFromTemp(temp, '.list-entry');
-	var title = ret.querySelector('list-entry-title');
+	var title = ret.querySelector('.list-entry-title');
 	addText(title, entry.title);
 	var desc = myNewText('p', entry.description);
 	ret.appendChild(desc);
@@ -96,7 +70,7 @@ function parse_entry(entry, temp){
 }
 function parse_section(section, temp){
 	var ret = getFromTemp(temp, '.list-section');
-	var h = ret.querySelector('list-section-title');
+	var h = ret.querySelector('.list-section-title');
 	addText(h, section.name);
 	section.entries_list.forEach(function(item, i, arr) {
 		ret.appendChild(parse_entry(item, temp));
