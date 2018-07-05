@@ -1,18 +1,18 @@
 ---
 title: Список ссылок
 ---
-<div id="list-container">
 
 <template>
 	<div class="list-desc"></div>
 	<div class="list-date"></div>
 	<ol class="list-menu"></ol>
-	<li><a href="#"></a></li>
+	<li class="list-menu-item"><a href="#"></a></li>
 	<div class="list-section" id="section"><h1 class="list-section-header"></h1></div>
 	<div class="list-entry"><h2 class="list-entry-header"></h2></div>
 	<p class="list-link"></p>
 </template>
 
+<div class="list"></div>
 
 <script type="text/javascript" src="/util.js"></script>
  <script>
@@ -38,7 +38,13 @@ function myNewText(type, text){
 	return ret;
 }
 
-function parse_link(link){
+
+function getFromTemp(temp, sel){
+	return temp.content.querySelector(sel).cloneNode(true);
+}
+
+function parse_link(link, temp){
+	var ret = getFromTemp(temp, '.list-link');
 	var left_part;
 	if (link.description == '' ) 
 	switch(link.source){
@@ -60,16 +66,16 @@ function parse_link(link){
 	}
 	else
 		left_part = link.description;
-	var ret = myNewText('p', left_part + ': ');
+	addText(ret, left_part + ': ');
 	var l = myNewText('a', link.url);
 	l.setAttribute('href', link.url);
 	ret.appendChild(l);
 	return ret;
 }
-function parse_entry(entry){
-	var ret = myNewBlock('div', 'list-entry');
-	var title = myNewText('h2', entry.title);
-	ret.appendChild(title);
+function parse_entry(entry, temp){
+	var ret = getFromTemp(temp, '.list-entry');
+	var title = ret.querySelector('h2');
+	addText(title, entry.title);
 	var desc = myNewText('p', entry.description);
 	ret.appendChild(desc);
 	if (entry.tags.length > 0){
@@ -83,43 +89,48 @@ function parse_entry(entry){
 		ret.appendChild(myNewText('p', tags));
 	}
 	entry.links_list.forEach(function(item, i, arr){
-		var l = parse_link(item);
+		var l = parse_link(item, temp);
 		ret.appendChild(l);
 	});
 	return ret;
 }
-function parse_section(section){
-	var ret = myNewBlock('div', 'list-section');
-	ret.id = 'section';
-	var h = myNewText('h1', section.name);
-	ret.appendChild(h);
+function parse_section(section, temp){
+	var ret = getFromTemp(temp, '.list-section');
+	var h = ret.querySelector('h1');
+	addText(h, section.name);
 	section.entries_list.forEach(function(item, i, arr) {
-		ret.appendChild(parse_entry(item));
+		ret.appendChild(parse_entry(item, temp));
 	});
 	return ret;
 }
-function parse_list(list){
-	var body = document.getElementById('list-container');
-	var h = myNewBlock('div', 'list-desc');
-	h.appendChild(myNewText('p', 'Ссылки на сообщества по Touhou Project в СНГ сегменте. Touhou СНГ Хаб©'));
-	body.appendChild(h);
-	var d = myNewBlock('div', 'list-date');
-	var dd = myNewText('p', 'Список на ' + list.date);
-	d.appendChild(dd);
+
+
+function draw_list(list){
+	var body = document.querySelector('.list');
+	var temp = document.querySelector('template');
+	if (!('content' in temp)){
+		body.appendChild(myNewText('p', 'Ваш браузер пока не поддерживает HTML-тег <template>'));
+		return;
+	}
+	//var clone = temp.content.cloneNode(true);
+	var desc = getFromTemp(temp, '.list-desc');
+	desc.appendChild(myNewText('p', 'Ссылки на сообщества по Touhou Project в СНГ сегменте. Touhou СНГ Хаб©'));
+	body.appendChild(desc);
+	var d = getFromTemp(temp, '.list-date');
+	d.appendChild(myNewText('p', 'Список на ' + list.date));
 	body.appendChild(d);
-	var menu = myNewBlock('ol', 'list-menu');
+	var menu = getFromTemp(temp, '.list-menu');
 	var section;
 	list.sections_list.forEach(function(item, i, arr) {
-		var li = myNewBlock('li');
-		var a = myNewText('a', item.name);
-		a.setAttribute('href', '#');
-		var l = parse_section(item);
+		var li = getFromTemp(temp, '.list-menu-item');
+		var l = parse_section(item, temp);
 		if (section === undefined)
 			section = l;
+		var a = li.querySelector('a');
 		a.addEventListener('click', function() {
 			body.replaceChild(l, document.getElementById('section'));
 		});
-		li.appendChild(a);
+		addText(a, item.name);
 		menu.appendChild(li);
 	});
 	
@@ -128,9 +139,8 @@ function parse_list(list){
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-	loadJSON('/links_lists/ll_latest.json', function (s){
-	parse_list(JSON.parse(s));}, function (){});
+	loadJSON('/links_lists/ll_latest.json',
+	function (s){ draw_list(JSON.parse(s)); },
+	function (){} );
 });
   </script>
-
-</div>
