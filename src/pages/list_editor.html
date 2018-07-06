@@ -1,12 +1,3 @@
-<!-- <template>
-<button class="save" onclick="save()">Сохранить себе</button>
-</template>
--->
-<div class="list"></div>
-
-<!-- <script type="text/javascript" src="/FileSaver.js"></script> -->
-<script type="text/javascript" src="/util.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor/dist/jsoneditor.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
  crossorigin="anonymous">
@@ -14,9 +5,18 @@
  rel="stylesheet"
  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
  crossorigin="anonymous">
+
+<button class="save" onclick="save()">Сохранить себе</button>
+
+<div class="list"></div>
+
+<script type="text/javascript" src="/FileSaver.js"></script>
+<script type="text/javascript" src="/util.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor/dist/jsoneditor.min.js"></script>
  <script type="text/javascript">
 	var schema;
 	var def;
+	var editor;
 	loadJSON('/links_lists/ll_latest.json', function (s){
 	def = JSON.parse(s); draw() }, function (){});
 	loadJSON('/ll_schema.json', function (s){
@@ -27,28 +27,22 @@ function draw(){
 	if (schema === undefined || def === undefined)
 		return;
 	var body = document.querySelector('.list');
-	var editor = new JSONEditor(body, {
+	editor = new JSONEditor(body, {
 		schema: schema,
 		theme: "bootstrap3",
 		startval: def,
 		iconlib: "fontawesome4",
+		disable_properties: true,
+		show_errors: "always"
 	});
 	
-	//body.appendChild(getFromTemp(temp, '.save'));
 }
-/*
 function save(){
-	if(cute_json !== undefined){
-	var blob = new Blob([JSON.stringify(cute_json)], {type: "application/json"});
+	if(editor !== undefined){
+	var blob = new Blob([JSON.stringify(editor.getValue())], {type: "application/json"});
 	saveAs(blob, "ll_latest.json");
-	var temp = document.querySelector('template');
-	if (!('content' in temp)){
-		body.appendChild(myNewText('p', 'Ваш браузер пока не поддерживает HTML-тег <template>'));
-		return;
-	}
 	
 	}
 }
-*/
 
 </script>
