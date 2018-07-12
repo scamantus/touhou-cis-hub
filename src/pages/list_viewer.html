@@ -24,7 +24,7 @@ var temp;
 function show_tag(tag){
 	var sect = getFromTemp(temp, '.list-section');
 	var h = sect.querySelector('.list-section-title');
-	addText(h, tag);
+	addText(h, "Tag: " + tag);
 	list.sections_list.forEach(function(section, i, arr) {
 		section.entries_list.forEach(function(entry, j, arr2){
 			for (var k = 0; k < entry.tags.length; k++){
