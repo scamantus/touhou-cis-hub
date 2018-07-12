@@ -10,6 +10,7 @@ title: Список ссылок
 	<div class="list-section" id="section"><h1 class="list-section-title"></h1></div>
 	<div class="list-entry"><h2 class="list-entry-title"></h2></div>
 	<p class="list-link"></p>
+	<a class="list-tag" href="#"></a>
 </template>
 
 <div class="list"></div>
@@ -17,7 +18,30 @@ title: Список ссылок
 <script type="text/javascript" src="/util.js"></script>
  <script>
 
-function parse_link(link, temp){
+var list;
+var temp;
+
+function show_tag(tag){
+	var sect = getFromTemp(temp, '.list-section');
+	var h = sect.querySelector('.list-section-title');
+	addText(h, tag);
+	list.sections_list.forEach(function(section, i, arr) {
+		section.entries_list.forEach(function(entry, j, arr2){
+			for (var k = 0; k < entry.tags.length; k++){
+				t = entry.tags[k];
+				if (t == tag){
+					sect.appendChild(parse_entry(entry));
+					break;
+				}
+			};
+		});
+	});	
+	var body = document.querySelector('.list');
+	body.replaceChild(sect, document.getElementById('section'));
+	
+}
+
+function parse_link(link){
 	var ret = getFromTemp(temp, '.list-link');
 	var left_part;
 	if (link.description == '' ) 
@@ -46,42 +70,47 @@ function parse_link(link, temp){
 	ret.appendChild(l);
 	return ret;
 }
-function parse_entry(entry, temp){
+function parse_entry(entry){
 	var ret = getFromTemp(temp, '.list-entry');
 	var title = ret.querySelector('.list-entry-title');
 	addText(title, entry.title);
 	var desc = myNewText('p', entry.description);
 	ret.appendChild(desc);
 	if (entry.tags.length > 0){
-		var tags = 'Теги: ';
+		var tags = myNewText('p', 'Теги: ');
 		//TODO: interactive
 		entry.tags.forEach(function(item, i, arr){
 			if (i != 0)
-				tags+= ', ';
-			tags += item;
+				addText(tags, ', ');
+			a = getFromTemp(temp, '.list-tag');
+			addText(a, item);
+			a.addEventListener('click', function() {
+				show_tag(item);
+			});
+			tags.appendChild(a);
 		});
-		ret.appendChild(myNewText('p', tags));
+		ret.appendChild(tags);
 	}
 	entry.links_list.forEach(function(item, i, arr){
-		var l = parse_link(item, temp);
+		var l = parse_link(item);
 		ret.appendChild(l);
 	});
 	return ret;
 }
-function parse_section(section, temp){
+function parse_section(section){
 	var ret = getFromTemp(temp, '.list-section');
 	var h = ret.querySelector('.list-section-title');
 	addText(h, section.name);
 	section.entries_list.forEach(function(item, i, arr) {
-		ret.appendChild(parse_entry(item, temp));
+		ret.appendChild(parse_entry(item));
 	});
 	return ret;
 }
 
 
-function draw_list(list){
+function draw_list(){
 	var body = document.querySelector('.list');
-	var temp = document.querySelector('template');
+	temp = document.querySelector('template');
 	if (!('content' in temp)){
 		body.appendChild(myNewText('p', 'Ваш браузер пока не поддерживает HTML-тег <template>'));
 		return;
@@ -97,7 +126,7 @@ function draw_list(list){
 	var section;
 	list.sections_list.forEach(function(item, i, arr) {
 		var li = getFromTemp(temp, '.list-menu-item');
-		var l = parse_section(item, temp);
+		var l = parse_section(item);
 		if (section === undefined)
 			section = l;
 		var a = li.querySelector('a');
@@ -114,7 +143,7 @@ function draw_list(list){
 
 window.addEventListener('DOMContentLoaded', function() {
 	loadJSON('/links_lists/ll_latest.json',
-	function (s){ draw_list(JSON.parse(s)); },
+	function (s){ list = JSON.parse(s); draw_list(); },
 	function (){} );
 });
   </script>
