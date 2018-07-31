@@ -72,6 +72,12 @@ header a:hover {
 	vertical-align:top; 
 }
 
+.list-tag {
+    text-decoration: none;
+    color: seagreen;
+}
+
+
 .list-entry * {
 	margin: .5em 0;
 }
