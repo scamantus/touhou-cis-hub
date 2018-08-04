@@ -62,3 +62,7 @@ typings/
 
 #nanogen output
 public/
+
+#db folder contents (except folder itself)
+db/*
+!db/git_anchor.txt
