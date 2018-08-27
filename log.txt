@@ -1,0 +1,307 @@
+
+> touhou-cis-hub@1.0.0 start D:\╨б╨╡╤А╨▓╨╡╤А\touhou-cis-hub
+> node ./public/main.js
+
+./db/cheese.db
+Our app is running on http://localhost:8080
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Consecutive horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+Callback horse finished!
+DB closed.
+Callback horse finished!
+Callback horse finished!
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+Callback horse finished!
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+DB closed.
+Завершить выполнение пакетного файла [Y(да)/N(нет)]? 
