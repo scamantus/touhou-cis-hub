@@ -13,10 +13,13 @@ main {
 header {
 	background-color: teal;
 	text-align: center;
+	position: fixed;
+	width: 100%;
+	color: white;
 }
 
-footer {
-	text-align: center;
+header nav {
+	display: inline-block;
 }
 
 header ul {
@@ -36,6 +39,15 @@ header a {
 
 header a:hover {
 	background: rgba(0, 0, 0, 0.1);
+}
+
+.user-tab {
+	padding: 15px 50px 15px 0;
+	float: right;
+}
+
+footer {
+	text-align: center;
 }
 
 /* list part */
