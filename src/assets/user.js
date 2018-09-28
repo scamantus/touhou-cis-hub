@@ -1,22 +1,18 @@
-const admin = require('express').Router();
+const user = require('express').Router();
 const sqlite3 = require('sqlite3').verbose();
 //const gldb = require('./constants').db;
 //console.log(gldb);
 
-admin.route('/').get((req, res) => {
-	res.send('Win');
+
+
+user.route('/nick').post((req, res) => {
+	var nick = req.body.new_nick;
+	res.cookie('nick' , nick)
+	.render('user/nick/index.html');
 });
-
-
-admin.route('/send').get((req, res) => {
-	
-	
-}).post((req, res) => {
-	var fr = req.body.new_nick;
-	
-	res.send(fr);
-});
-
+/*.get((req, res) => {
+	res.render('user/nick/index.html');
+}) */
 /*
 function check_db(){
 	var db = new sqlite3.Database(gldb, sqlite3.OPEN_READONLY, (err) => {
@@ -79,15 +75,15 @@ function dummy(){
 }
 */
 /*
-admin.route('/dummy').get((req, res) => {
+user.route('/dummy').get((req, res) => {
 	dummy();
 	res.send('done');
 });
 */
 /*
-admin.route('/create').get((req, res) => {
+user.route('/create').get((req, res) => {
 	check_db();
 	res.send('done');
 });
 */
-module.exports = admin;
+module.exports = user;

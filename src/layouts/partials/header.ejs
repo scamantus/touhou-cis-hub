@@ -7,6 +7,17 @@
 		</ul>
 	</nav>
 	<div class="user-tab">
-		<a href="admin/form"> Привет, Гость</a>
+		<a id="hello" href="/user/nick"> Привет, Гость</a>
 	</div>
 </div>
+
+<script>
+var nick = getCookie('nick');
+if (nick != ""){
+	var hello = document.querySelector('#hello');
+	while (hello.firstChild) {
+    hello.removeChild(hello.firstChild);
+}
+	addText(hello, 'Привет, ' + nick);
+}
+</script>
